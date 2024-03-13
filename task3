@@ -1,0 +1,76 @@
+package atm1;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author yasht
+ */
+class user{
+public float balance = 1000;
+
+}
+
+class machine extends user{
+    
+public void withdrawn(float a){
+balance = balance - a;
+System.out.println("R"+a+" has been withdrawn from your account \n"); 
+
+}
+
+public void deposit(float a){
+balance = balance + a;
+System.out.println("R"+a+" has been deposited into your account \n"); 
+}
+
+public void balance(){
+System.out.println("Account Balance: R"+balance+"\n"); 
+}
+
+}
+
+public class Atm1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Scanner opt = new Scanner(System.in);
+        machine obj = new machine();
+        int num;
+        do{
+        System.out.println("ATM:");
+        System.out.println("1. Withdrawn");
+        System.out.println("2. Deposit");
+        System.out.println("3. Check balance");
+        System.out.println("4. Close");
+        System.out.println("Enter the coresponding number");
+        num = opt.nextInt(); 
+        if (num== 1){
+         System.out.println("Enter the amount you want to withdraw");
+         float num2 = opt.nextFloat();
+         if (num2 > obj.balance){
+         System.out.println("your withdrawal amount exceeeds your balance ,please check your balance");
+         }else{
+        obj.withdrawn(num2);
+         }
+        }else if(num==2){
+        System.out.println("Enter the amount you want to deposit");
+         float num2 = opt.nextFloat();
+        obj.deposit(num2);
+        }else if(num==3){
+        obj.balance();
+        
+        }else if(num==4){
+          System.out.println("Thank you and have a good day");
+        }else{
+        System.out.println("you have entered a invalid option , please try again");
+        }
+
+        }while(num!=4);
+        
+    }
+    
+}
